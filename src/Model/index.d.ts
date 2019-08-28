@@ -33,6 +33,10 @@ declare module '@nozbe/watermelondb/Model' {
 
     public id: RecordId
 
+    public _isCommitted: boolean
+
+    public _hasPendingUpdate: boolean
+
     public syncStatus: SyncStatus
 
     public update(recordUpdater?: (record: this) => void): Promise<void>
@@ -53,6 +57,6 @@ declare module '@nozbe/watermelondb/Model' {
 
     public subAction<T>(action: () => Promise<T>): Promise<T>
 
-    public collection: Collection<this>
+    public collection: Collection<Model>
   }
 }
